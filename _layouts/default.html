@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang }}">
+<head>
+  <meta charset="utf-8">
+  <title>{{ page.title }} | {{ site.title }}</title>
+  <meta name="description" content="{{ site.description }}">
+  <link rel="stylesheet" href="{{ "/assets/css/style.css" | relative_url }}">
+</head>
+<body>
+  <!-- Cabecera con navegación -->
+  <header>
+    <nav>
+      <ul>
+        <li><a href="{{ site.baseurl }}/es/">Inicio</a></li>
+        <li><a href="{{ site.baseurl }}/es/about/">Acerca de</a></li>
+        <li><a href="{{ site.baseurl }}/es/projects/">Proyectos</a></li>
+        <li><a href="{{ site.baseurl }}/es/contact/">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <!-- Switch de idioma -->
+    <div class="lang-switch">
+      <a href="{{ site.baseurl }}/es/">ES</a> | 
+      <a href="{{ site.baseurl }}/en/">EN</a>
+    </div>
+  </header>
+
+  <!-- Contenido dinámico -->
+  <main>
+    {{ content }}
+  </main>
+
+  <!-- Pie de página -->
+  <footer>
+    <p>&copy; {{ site.title }} - {{ site.description }}</p>
+  </footer>
+</body>
+</html>
