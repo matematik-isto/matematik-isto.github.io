@@ -16,7 +16,7 @@ Construir una página web de portafolio profesional moderna y minimalista, de un
 ## Estructura (una sola página con scroll suave + navbar anclado)
 
 ### 1. Navbar fijo
-- Nombre/marca a la izquierda, enlaces de navegación a la derecha: Inicio · Proyectos · Habilidades · Contacto.
+- Enlaces de navegación a la izquierda: Inicio · Proyectos · Habilidades · Contacto. Nombre/marca debajo de los enlaces (también a la izquierda).
 - Fondo translúcido con blur al hacer scroll.
 - Logo/iniciales en verde.
 
