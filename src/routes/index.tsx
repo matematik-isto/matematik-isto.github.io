@@ -75,7 +75,7 @@ function Navbar() {
           href="#inicio"
           className="text-lg font-bold tracking-tight text-foreground"
         >
-          <span className="text-accent">●</span> {profile.name}
+          <span className="text-accent">●</span>Ramón Correa
         </a>
       </nav>
     </header>

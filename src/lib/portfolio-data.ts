@@ -75,7 +75,7 @@ export const skillCategories: SkillCategory[] = [
 ];
 
 export const profile = {
-  name: "Tu Nombre",
+  name: "Ramón Correa Ramírez",
   role: "Científico de Datos",
   bio: "Transformo datos en decisiones. Diseño modelos predictivos y dashboards que ayudan a equipos a entender su negocio y actuar con confianza.",
   links: {
