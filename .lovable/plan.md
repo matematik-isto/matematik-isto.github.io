@@ -1,4 +1,4 @@
-# Portafolio Profesional — Analista/Científico de Datos
+# Portafolio Profesional — Científico de Datos
 
 ## Objetivo
 Construir una página web de portafolio profesional moderna y minimalista, de una sola página, con tonos grises/blancos y verde como acento. Contenido de ejemplo (placeholder) que el usuario podrá editar fácilmente.
