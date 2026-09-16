@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Github, Linkedin, ArrowRight, BarChart3, ExternalLink } from "lucide-react";
+import { Github, Linkedin, ArrowRight, BarChart3, ExternalLink, UserRound } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { CardContent } from "@/components/ui/card";
@@ -9,6 +9,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { projects, skillCategories, profile } from "@/lib/portfolio-data";
+import dataScienceBanner from "@/assets/data-science-banner.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -85,10 +86,32 @@ function Hero() {
   return (
     <section
       id="inicio"
-      className="relative flex min-h-screen items-center pt-28"
+      className="relative flex min-h-screen items-center pb-16 pt-32"
     >
       <div className="mx-auto w-full max-w-5xl px-6">
-        <div className="fade-up max-w-2xl">
+        <div className="fade-up">
+          <div className="mb-8 grid items-stretch gap-5 sm:grid-cols-[12rem_1fr]">
+            <div className="flex aspect-[4/5] min-h-52 flex-col items-center justify-center overflow-hidden rounded-lg border border-dashed border-accent/50 bg-card text-center shadow-soft">
+              <div className="flex size-14 items-center justify-center rounded-full bg-accent/10 text-accent">
+                <UserRound className="size-7" aria-hidden="true" />
+              </div>
+              <p className="mt-4 text-sm font-medium text-foreground">Tu fotografía</p>
+              <p className="mt-1 px-4 text-xs text-muted-foreground">Retrato profesional</p>
+            </div>
+            <div className="relative min-h-52 overflow-hidden rounded-lg border border-border bg-card shadow-soft">
+              <img
+                src={dataScienceBanner}
+                alt="Visualización abstracta de análisis de datos en tonos grises y verdes"
+                width={1600}
+                height={800}
+                className="h-full w-full object-cover"
+              />
+              <div className="absolute inset-x-0 bottom-0 border-t border-border bg-card/85 px-5 py-3 backdrop-blur-sm">
+                <p className="text-sm font-medium text-foreground">Datos que explican. Modelos que anticipan.</p>
+              </div>
+            </div>
+          </div>
+          <div className="max-w-2xl">
           <Badge
             variant="outline"
             className="mb-6 border-accent/30 text-accent"
@@ -114,6 +137,7 @@ function Hero() {
             >
               <a href="#contacto">Contacto</a>
             </Button>
+          </div>
           </div>
         </div>
       </div>
