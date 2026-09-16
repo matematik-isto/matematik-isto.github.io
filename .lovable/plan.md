@@ -22,7 +22,7 @@ Construir una página web de portafolio profesional moderna y minimalista, de un
 
 ### 2. Encabezado / Hero
 - Nombre grande (placeholder: "Ramón Correa" o "Tu Nombre").
-- Rol: "Analista / Científico de Datos".
+- Rol: "Científico de Datos".
 - Biografía corta (2–3 líneas, placeholder).
 - Botones: "Ver proyectos" (verde) y "Contacto" (borde).
 - Tal vez un avatar o monograma.
