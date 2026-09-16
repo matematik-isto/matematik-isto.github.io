@@ -9,7 +9,7 @@ Construir una página web de portafolio profesional moderna y minimalista, de un
   - Fondo: blanco / grises muy claros.
   - Texto: grises oscuros casi negros.
   - Acento: **verde** para botones, destacados, métricas, hover states y elementos interactivos.
-- Tipografía: cargar fuentes web vía `<link>` en `src/routes/__root.tsx` (p. ej. Inter para cuerpo, una display ligera para títulos).
+- Tipografía: cargar Roboto de Google Fonts vía `<link>` en `src/routes/__root.tsx` (Roboto para cuerpo y títulos, con pesos 400/500/700).
 - Animación sutil con `tw-animate-css` ya presente: fade-in/slide-up al hacer scroll, transiciones suaves en tarjetas y botones.
 - Sin custom colors hardcoded en componentes: se definen tokens semánticos en `src/styles.css` (incluyendo un `--accent` verde redefinido o un nuevo `--accent-2` verde) y se usan las clases `bg-accent`, `text-accent`, etc.
 
