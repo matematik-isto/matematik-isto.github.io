@@ -1,6 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Github, Linkedin, ArrowRight, BarChart3, ExternalLink, UserRound } from "lucide-react";
+import { Github, Linkedin, ArrowRight, BarChart3, ExternalLink, Database, PieChart } from "lucide-react";
+import {
+  siPython,
+  siPostgresql,
+  siScikitlearn,
+  siPandas,
+  siNumpy,
+  siTensorflow,
+  siPlotly,
+  type SimpleIcon,
+} from "simple-icons";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { CardContent } from "@/components/ui/card";
@@ -9,7 +19,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { projects, skillCategories, profile } from "@/lib/portfolio-data";
-import dataScienceBanner from "@/assets/data-science-banner.jpg";
+import profilePhoto from "@/assets/perfil.png.asset.json";
+import dataScienceBanner from "@/assets/banner-datos.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -91,16 +102,18 @@ function Hero() {
       <div className="mx-auto w-full max-w-5xl px-6">
         <div className="fade-up">
           <div className="mb-8 grid items-stretch gap-5 sm:grid-cols-[12rem_1fr]">
-            <div className="flex aspect-[4/5] min-h-52 flex-col items-center justify-center overflow-hidden rounded-lg border border-dashed border-accent/50 bg-card text-center shadow-soft">
-              <div className="flex size-14 items-center justify-center rounded-full bg-accent/10 text-accent">
-                <UserRound className="size-7" aria-hidden="true" />
-              </div>
-              <p className="mt-4 text-sm font-medium text-foreground">Tu fotografía</p>
-              <p className="mt-1 px-4 text-xs text-muted-foreground">Retrato profesional</p>
+            <div className="aspect-[4/5] min-h-52 overflow-hidden rounded-lg border border-border bg-card shadow-soft">
+              <img
+                src={profilePhoto.url}
+                alt={`Retrato profesional de ${profile.name}`}
+                width={768}
+                height={1024}
+                className="h-full w-full object-cover object-top"
+              />
             </div>
             <div className="relative min-h-52 overflow-hidden rounded-lg border border-border bg-card shadow-soft">
               <img
-                src={dataScienceBanner}
+                src={dataScienceBanner.url}
                 alt="Visualización abstracta de análisis de datos en tonos grises y verdes"
                 width={1600}
                 height={800}
@@ -232,25 +245,45 @@ function Projects() {
   );
 }
 
-function SkillBar({ name, level }: { name: string; level: number }) {
-  const [width, setWidth] = useState(0);
-  useEffect(() => {
-    const id = requestAnimationFrame(() => setWidth(level));
-    return () => cancelAnimationFrame(id);
-  }, [level]);
+const SKILL_ICONS: Partial<Record<string, SimpleIcon>> = {
+  Python: siPython,
+  SQL: siPostgresql,
+  "Scikit-learn": siScikitlearn,
+  Pandas: siPandas,
+  NumPy: siNumpy,
+  TensorFlow: siTensorflow,
+  Matplotlib: siPlotly,
+};
 
+function TechnologyLogo({ name }: { name: string }) {
+  const icon = SKILL_ICONS[name];
+
+  if (icon) {
+    return (
+      <svg viewBox="0 0 24 24" className="size-8" role="img" aria-label={`${name} logo`}>
+        <path fill="currentColor" d={icon.path} />
+      </svg>
+    );
+  }
+
+  if (name === "R") {
+    return <span className="text-2xl font-bold" aria-label="R logo">R</span>;
+  }
+
+  if (name === "Power BI" || name === "Tableau") {
+    return <PieChart className="size-8" aria-label={`${name} logo`} />;
+  }
+
+  return <Database className="size-8" aria-hidden="true" />;
+}
+
+function SkillIcon({ name }: { name: string }) {
   return (
-    <div>
-      <div className="mb-1.5 flex items-center justify-between text-sm">
-        <span className="font-medium text-foreground">{name}</span>
-        <span className="text-muted-foreground">{level}%</span>
+    <div className="group flex min-h-28 flex-col items-center justify-center gap-3 rounded-md border border-border bg-secondary/50 p-4 text-center transition-colors hover:border-accent/50 hover:bg-accent/5">
+      <div className="flex size-12 items-center justify-center text-accent transition-transform duration-300 group-hover:scale-110">
+        <TechnologyLogo name={name} />
       </div>
-      <div className="h-2 w-full overflow-hidden rounded-full bg-secondary">
-        <div
-          className="h-full rounded-full bg-accent transition-all duration-700 ease-out"
-          style={{ width: `${width}%` }}
-        />
-      </div>
+      <span className="text-sm font-medium text-foreground">{name}</span>
     </div>
   );
 }
@@ -278,13 +311,9 @@ function Skills() {
                 <h3 className="mb-5 text-sm font-semibold uppercase tracking-wide text-accent">
                   {category.title}
                 </h3>
-                <div className="space-y-4">
+                <div className="grid grid-cols-2 gap-3">
                   {category.skills.map((skill) => (
-                    <SkillBar
-                      key={skill.name}
-                      name={skill.name}
-                      level={skill.level}
-                    />
+                    <SkillIcon key={skill.name} name={skill.name} />
                   ))}
                 </div>
               </CardContent>
