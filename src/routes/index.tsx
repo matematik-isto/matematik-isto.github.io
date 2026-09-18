@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Github, Linkedin, ArrowRight, BarChart3, ExternalLink, Database, PieChart } from "lucide-react";
+import { Github, Linkedin, ArrowRight, BarChart3, ExternalLink, Database } from "lucide-react";
 import {
   siPython,
   siPostgresql,
@@ -270,8 +270,8 @@ function TechnologyLogo({ name }: { name: string }) {
     return <span className="text-2xl font-bold" aria-label="R logo">R</span>;
   }
 
-  if (name === "Power BI" || name === "Tableau") {
-    return <PieChart className="size-8" aria-label={`${name} logo`} />;
+  if (name === "Power BI") {
+    return <BarChart3 className="size-8" aria-label={`${name} logo`} />;
   }
 
   return <Database className="size-8" aria-hidden="true" />;
