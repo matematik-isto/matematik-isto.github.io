@@ -79,7 +79,7 @@ export const profile = {
   role: "Científico de Datos",
   bio: "Transformo datos en decisiones. Diseño modelos predictivos y dashboards que ayudan a equipos a entender su negocio y actuar con confianza.",
   links: {
-    github: "https://github.com/",
+    github: "https://github.com/matematik-isto",
     linkedin: "https://www.linkedin.com/",
   },
 };
