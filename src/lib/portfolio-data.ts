@@ -80,6 +80,6 @@ export const profile = {
   bio: "Transformo datos en decisiones. Diseño modelos predictivos y dashboards que ayudan a equipos a entender su negocio y actuar con confianza.",
   links: {
     github: "https://github.com/matematik-isto",
-    linkedin: "https://www.linkedin.com/",
+    linkedin: "https://www.linkedin.com/in/ram%C3%B3n-correa/",
   },
 };
