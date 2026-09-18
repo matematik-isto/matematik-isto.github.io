@@ -68,7 +68,6 @@ export const skillCategories: SkillCategory[] = [
     title: "Visualización",
     skills: [
       { name: "Power BI", level: 92 },
-      { name: "Tableau", level: 80 },
       { name: "Matplotlib", level: 88 },
     ],
   },
