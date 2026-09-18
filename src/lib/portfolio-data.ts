@@ -25,13 +25,13 @@ export const projects: Project[] = [
     demo: "#",
   },
   {
-    title: "Dashboard de Ventas en Power BI",
+    title: "Chicago Taxis: Clima y Demanda",
     description:
-      "Tablero interactivo que centraliza KPIs de venta, margen y comportamiento de compra por región y línea de producto en tiempo real.",
-    metricLabel: "Reducción de tiempo de reporte",
-    metricValue: "−68%",
-    technologies: ["Power BI", "SQL", "DAX"],
-    github: "https://github.com/",
+      "Análisis de registros de viajes en taxi de Chicago combinando datos de una API y consultas SQL para determinar si las condiciones climáticas impactan el uso de taxis.",
+    metricLabel: "Fuentes de datos integradas",
+    metricValue: "API + SQL",
+    technologies: ["Python", "SQL", "Jupyter"],
+    github: "https://github.com/matematik-isto/chicago_taxis_project",
     demo: "#",
   },
   {
