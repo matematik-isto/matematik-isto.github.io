@@ -35,13 +35,13 @@ export const projects: Project[] = [
     demo: "#",
   },
   {
-    title: "Segmentación de Clientes con K-Means",
+    title: "Planes de Telefonía: Análisis de Rentabilidad",
     description:
-      "Agrupación no supervisada de clientes por comportamiento de compra para personalizar ofertas y optimizar el ROI de marketing.",
-    metricLabel: "ROI de campaña",
-    metricValue: "+32%",
-    technologies: ["Python", "Pandas", "NumPy"],
-    github: "https://github.com/",
+      "Análisis de los planes Surf y Ultimate de Megaline con datos de 500 clientes (llamadas, mensajes e internet) para determinar qué plan genera más ingresos y ajustar el presupuesto de publicidad.",
+    metricLabel: "Clientes analizados",
+    metricValue: "500",
+    technologies: ["Python", "Pandas", "Seaborn"],
+    github: "https://github.com/matematik-isto/cellphone_plans_project",
     demo: "#",
   },
 ];
