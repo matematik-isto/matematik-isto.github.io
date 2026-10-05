@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Keep all user-facing portfolio copy centralized by language in the portfolio data module so both language views remain complete and synchronized.
