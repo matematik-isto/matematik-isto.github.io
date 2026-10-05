@@ -18,7 +18,15 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
-import { projects, skillCategories, profile } from "@/lib/portfolio-data";
+import {
+  projectsByLanguage,
+  skillCategories,
+  skillCategoryTitles,
+  profile,
+  portfolioCopy,
+  type Language,
+  type PortfolioCopy,
+} from "@/lib/portfolio-data";
 import profilePhoto from "@/assets/perfil.png.asset.json";
 import dataScienceBanner from "@/assets/banner-datos.png.asset.json";
 
@@ -44,15 +52,14 @@ export const Route = createFileRoute("/")({
   component: PortfolioPage,
 });
 
-const NAV_LINKS = [
-  { label: "Inicio", href: "#inicio" },
-  { label: "Proyectos", href: "#proyectos" },
-  { label: "Habilidades", href: "#habilidades" },
-  { label: "Contacto", href: "#contacto" },
-];
-
-function Navbar() {
+function Navbar({ language, copy, onLanguageChange }: { language: Language; copy: PortfolioCopy; onLanguageChange: (language: Language) => void }) {
   const [scrolled, setScrolled] = useState(false);
+  const navLinks = [
+    { label: copy.nav.home, href: "#inicio" },
+    { label: copy.nav.projects, href: "#proyectos" },
+    { label: copy.nav.skills, href: "#habilidades" },
+    { label: copy.nav.contact, href: "#contacto" },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -70,8 +77,35 @@ function Navbar() {
       }`}
     >
       <nav className="mx-auto flex max-w-5xl flex-col gap-1 px-6 py-4">
-        <ul className="flex items-center gap-6 text-sm font-medium text-muted-foreground">
-          {NAV_LINKS.map((link) => (
+        <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+          <div className="flex items-center gap-1" aria-label={language === "es" ? "Seleccionar idioma" : "Select language"}>
+            <Button
+              type="button"
+              variant="ghost"
+              size="icon"
+              onClick={() => onLanguageChange("es")}
+              aria-label="Español"
+              aria-pressed={language === "es"}
+              title="Español"
+              className={`text-xl ${language === "es" ? "bg-accent/15 ring-1 ring-accent" : "opacity-60 hover:opacity-100"}`}
+            >
+              <span aria-hidden="true">🇪🇸</span>
+            </Button>
+            <Button
+              type="button"
+              variant="ghost"
+              size="icon"
+              onClick={() => onLanguageChange("en")}
+              aria-label="English"
+              aria-pressed={language === "en"}
+              title="English"
+              className={`text-xl ${language === "en" ? "bg-accent/15 ring-1 ring-accent" : "opacity-60 hover:opacity-100"}`}
+            >
+              <span aria-hidden="true">🇬🇧</span>
+            </Button>
+          </div>
+        <ul className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm font-medium text-muted-foreground">
+          {navLinks.map((link) => (
             <li key={link.href}>
               <a
                 href={link.href}
@@ -82,6 +116,7 @@ function Navbar() {
             </li>
           ))}
         </ul>
+        </div>
         <a
           href="#inicio"
           className="text-lg font-bold tracking-tight text-foreground"
@@ -93,7 +128,7 @@ function Navbar() {
   );
 }
 
-function Hero() {
+function Hero({ copy }: { copy: PortfolioCopy }) {
   return (
     <section
       id="inicio"
@@ -120,7 +155,7 @@ function Hero() {
                 className="h-full w-full object-cover"
               />
               <div className="absolute inset-x-0 bottom-0 border-t border-border bg-card/85 px-5 py-3 backdrop-blur-sm">
-                <p className="text-sm font-medium text-foreground">Datos que explican. Modelos que anticipan.</p>
+                 <p className="text-sm font-medium text-foreground">{copy.banner}</p>
               </div>
             </div>
           </div>
@@ -129,18 +164,18 @@ function Hero() {
             variant="outline"
             className="mb-6 border-accent/30 text-accent"
           >
-            {profile.role}
+             {copy.role}
           </Badge>
           <h1 className="text-5xl font-bold leading-tight tracking-tight text-foreground sm:text-6xl">
             {profile.name}
           </h1>
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            {profile.bio}
+             {copy.bio}
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Button asChild className="bg-accent text-accent-foreground hover:bg-accent/90">
               <a href="#proyectos">
-                Ver proyectos <ArrowRight className="ml-2 size-4" />
+                 {copy.heroProjects} <ArrowRight className="ml-2 size-4" />
               </a>
             </Button>
             <Button
@@ -148,7 +183,7 @@ function Hero() {
               variant="outline"
               className="border-border bg-transparent"
             >
-              <a href="#contacto">Contacto</a>
+               <a href="#contacto">{copy.heroContact}</a>
             </Button>
           </div>
           </div>
@@ -158,7 +193,7 @@ function Hero() {
   );
 }
 
-function ProjectCard({ project }: { project: (typeof projects)[number] }) {
+function ProjectCard({ project, copy }: { project: (typeof projectsByLanguage.es)[number]; copy: PortfolioCopy }) {
   return (
     <Card className="group relative overflow-hidden border-border bg-card shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-accent/50 hover:shadow-lg">
       <CardContent className="flex h-full flex-col p-6">
@@ -201,7 +236,7 @@ function ProjectCard({ project }: { project: (typeof projects)[number] }) {
             className="text-muted-foreground hover:text-accent"
           >
             <a href={project.github} target="_blank" rel="noopener noreferrer">
-              <Github className="mr-2 size-4" /> GitHub
+               <Github className="mr-2 size-4" /> {copy.github}
             </a>
           </Button>
           <Button
@@ -210,7 +245,7 @@ function ProjectCard({ project }: { project: (typeof projects)[number] }) {
             className="bg-accent text-accent-foreground hover:bg-accent/90"
           >
             <a href={project.demo} target="_blank" rel="noopener noreferrer">
-              Ver demo <ExternalLink className="ml-2 size-4" />
+               {copy.demo} <ExternalLink className="ml-2 size-4" />
             </a>
           </Button>
         </div>
@@ -219,25 +254,25 @@ function ProjectCard({ project }: { project: (typeof projects)[number] }) {
   );
 }
 
-function Projects() {
+function Projects({ language, copy }: { language: Language; copy: PortfolioCopy }) {
+  const projects = projectsByLanguage[language];
   return (
     <section id="proyectos" className="scroll-mt-24 py-24">
       <div className="mx-auto max-w-5xl px-6">
         <div className="mb-12 max-w-2xl">
           <p className="mb-2 text-sm font-medium uppercase tracking-wide text-accent">
-            Proyectos
+             {copy.projectsEyebrow}
           </p>
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            Trabajo seleccionado
+             {copy.projectsTitle}
           </h2>
           <p className="mt-3 text-muted-foreground">
-            Modelos predictivos, análisis y dashboards que generan impacto
-            medible.
+             {copy.projectsIntro}
           </p>
         </div>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project) => (
-            <ProjectCard key={project.title} project={project} />
+             <ProjectCard key={project.title} project={project} copy={copy} />
           ))}
         </div>
       </div>
@@ -288,28 +323,27 @@ function SkillIcon({ name }: { name: string }) {
   );
 }
 
-function Skills() {
+function Skills({ language, copy }: { language: Language; copy: PortfolioCopy }) {
   return (
     <section id="habilidades" className="scroll-mt-24 border-t border-border bg-secondary/40 py-24">
       <div className="mx-auto max-w-5xl px-6">
         <div className="mb-12 max-w-2xl">
           <p className="mb-2 text-sm font-medium uppercase tracking-wide text-accent">
-            Habilidades
+             {copy.skillsEyebrow}
           </p>
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            Stack técnico
+             {copy.skillsTitle}
           </h2>
           <p className="mt-3 text-muted-foreground">
-            Herramientas con las que construyo soluciones de datos de extremo a
-            extremo.
+             {copy.skillsIntro}
           </p>
         </div>
         <div className="grid gap-6 md:grid-cols-3">
           {skillCategories.map((category) => (
             <Card key={category.title} className="border-border bg-card shadow-soft">
               <CardContent className="p-6">
-                <h3 className="mb-5 text-sm font-semibold uppercase tracking-wide text-accent">
-                  {category.title}
+                 <h3 className="mb-5 text-sm font-semibold uppercase tracking-wide text-accent">
+                   {skillCategoryTitles[language][skillCategories.indexOf(category)]}
                 </h3>
                 <div className="grid grid-cols-2 gap-3">
                   {category.skills.map((skill) => (
@@ -325,7 +359,7 @@ function Skills() {
   );
 }
 
-function ContactForm() {
+function ContactForm({ copy }: { copy: PortfolioCopy }) {
   const [sent, setSent] = useState(false);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -341,44 +375,44 @@ function ContactForm() {
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="space-y-2">
               <Label htmlFor="name" className="text-foreground">
-                Nombre
+                 {copy.name}
               </Label>
-              <Input id="name" name="name" required placeholder="Tu nombre" />
+               <Input id="name" name="name" required placeholder={copy.namePlaceholder} />
             </div>
             <div className="space-y-2">
               <Label htmlFor="email" className="text-foreground">
-                Email
+                 {copy.email}
               </Label>
               <Input
                 id="email"
                 name="email"
                 type="email"
                 required
-                placeholder="tu@correo.com"
+                 placeholder={copy.emailPlaceholder}
               />
             </div>
           </div>
           <div className="space-y-2">
             <Label htmlFor="message" className="text-foreground">
-              Mensaje
+               {copy.message}
             </Label>
             <Textarea
               id="message"
               name="message"
               required
               rows={4}
-              placeholder="Cuéntame sobre tu proyecto…"
+               placeholder={copy.messagePlaceholder}
             />
           </div>
           <Button
             type="submit"
             className="w-full bg-accent text-accent-foreground hover:bg-accent/90"
           >
-            Enviar mensaje
+             {copy.send}
           </Button>
           {sent && (
             <p className="text-center text-sm text-accent">
-              ¡Gracias! Tu mensaje fue enviado correctamente.
+               {copy.sent}
             </p>
           )}
         </form>
@@ -387,27 +421,26 @@ function ContactForm() {
   );
 }
 
-function Contact() {
+function Contact({ copy }: { copy: PortfolioCopy }) {
   return (
     <section id="contacto" className="scroll-mt-24 py-24">
       <div className="mx-auto max-w-5xl px-6">
         <div className="mb-12 max-w-2xl">
           <p className="mb-2 text-sm font-medium uppercase tracking-wide text-accent">
-            Contacto
+             {copy.contactEyebrow}
           </p>
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            Hablemos
+             {copy.contactTitle}
           </h2>
           <p className="mt-3 text-muted-foreground">
-            ¿Tienes un proyecto o una oportunidad? Escríbeme o conecta en
-            redes.
+             {copy.contactIntro}
           </p>
         </div>
         <div className="grid gap-8 lg:grid-cols-2">
-          <ContactForm />
+           <ContactForm copy={copy} />
           <div className="flex flex-col justify-center gap-4">
             <p className="text-muted-foreground">
-              También puedes encontrarme en:
+               {copy.findMe}
             </p>
             <div className="flex flex-wrap gap-3">
               <Button
@@ -444,13 +477,12 @@ function Contact() {
   );
 }
 
-function Footer() {
+function Footer({ copy }: { copy: PortfolioCopy }) {
   return (
     <footer className="border-t border-border py-10">
       <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-4 px-6 sm:flex-row">
         <p className="text-sm text-muted-foreground">
-          © {new Date().getFullYear()} {profile.name}. Todos los derechos
-          reservados.
+           © {new Date().getFullYear()} {profile.name}. {copy.rights}
         </p>
         <div className="flex gap-4">
           <a
@@ -478,16 +510,23 @@ function Footer() {
 }
 
 function PortfolioPage() {
+  const [language, setLanguage] = useState<Language>("es");
+  const copy = portfolioCopy[language];
+
+  useEffect(() => {
+    document.documentElement.lang = language;
+  }, [language]);
+
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <Navbar />
+      <Navbar language={language} copy={copy} onLanguageChange={setLanguage} />
       <main>
-        <Hero />
-        <Projects />
-        <Skills />
-        <Contact />
+        <Hero copy={copy} />
+        <Projects language={language} copy={copy} />
+        <Skills language={language} copy={copy} />
+        <Contact copy={copy} />
       </main>
-      <Footer />
+      <Footer copy={copy} />
     </div>
   );
 }
