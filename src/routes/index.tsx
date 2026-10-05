@@ -87,9 +87,9 @@ function Navbar({ language, copy, onLanguageChange }: { language: Language; copy
               aria-label="Español"
               aria-pressed={language === "es"}
               title="Español"
-              className={`text-xl ${language === "es" ? "bg-accent/15 ring-1 ring-accent" : "opacity-60 hover:opacity-100"}`}
+              className={language === "es" ? "bg-accent/15 ring-1 ring-accent" : "opacity-60 hover:opacity-100"}
             >
-              <span aria-hidden="true">🇪🇸</span>
+              <span className="flag-icon flag-es" aria-hidden="true" />
             </Button>
             <Button
               type="button"
@@ -99,9 +99,9 @@ function Navbar({ language, copy, onLanguageChange }: { language: Language; copy
               aria-label="English"
               aria-pressed={language === "en"}
               title="English"
-              className={`text-xl ${language === "en" ? "bg-accent/15 ring-1 ring-accent" : "opacity-60 hover:opacity-100"}`}
+              className={language === "en" ? "bg-accent/15 ring-1 ring-accent" : "opacity-60 hover:opacity-100"}
             >
-              <span aria-hidden="true">🇬🇧</span>
+              <span className="flag-icon flag-gb" aria-hidden="true" />
             </Button>
           </div>
         <ul className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm font-medium text-muted-foreground">
