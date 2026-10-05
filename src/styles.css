@@ -96,10 +96,6 @@
   --sidebar-accent-foreground: oklch(0.2 0.012 260);
   --sidebar-border: oklch(0.92 0.006 255);
   --sidebar-ring: oklch(0.62 0.17 150);
-  --flag-red: oklch(0.5 0.2 25);
-  --flag-yellow: oklch(0.88 0.18 95);
-  --flag-blue: oklch(0.34 0.14 255);
-  --flag-white: oklch(0.99 0 0);
 }
 
 .flag-icon {

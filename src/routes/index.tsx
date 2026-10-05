@@ -89,7 +89,7 @@ function Navbar({ language, copy, onLanguageChange }: { language: Language; copy
               title="Español"
               className={language === "es" ? "bg-accent/15 ring-1 ring-accent" : "opacity-60 hover:opacity-100"}
             >
-              <span className="flag-icon flag-es" aria-hidden="true" />
+              <span aria-hidden="true" className="text-xl leading-none">🇪🇸</span>
             </Button>
             <Button
               type="button"
@@ -101,7 +101,7 @@ function Navbar({ language, copy, onLanguageChange }: { language: Language; copy
               title="English"
               className={language === "en" ? "bg-accent/15 ring-1 ring-accent" : "opacity-60 hover:opacity-100"}
             >
-              <span className="flag-icon flag-gb" aria-hidden="true" />
+              <span aria-hidden="true" className="text-xl leading-none">🇬🇧</span>
             </Button>
           </div>
         <ul className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm font-medium text-muted-foreground">
@@ -510,7 +510,7 @@ function Footer({ copy }: { copy: PortfolioCopy }) {
 }
 
 function PortfolioPage() {
-  const [language, setLanguage] = useState<Language>("es");
+  const [language, setLanguage] = useState<Language>("en");
   const copy = portfolioCopy[language];
 
   useEffect(() => {
