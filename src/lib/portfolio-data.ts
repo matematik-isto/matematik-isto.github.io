@@ -13,7 +13,40 @@ export type SkillCategory = {
   skills: { name: string; level: number }[];
 };
 
-export const projects: Project[] = [
+export type Language = "es" | "en";
+
+export type PortfolioCopy = {
+  nav: { home: string; projects: string; skills: string; contact: string };
+  role: string;
+  bio: string;
+  banner: string;
+  heroProjects: string;
+  heroContact: string;
+  projectsEyebrow: string;
+  projectsTitle: string;
+  projectsIntro: string;
+  github: string;
+  demo: string;
+  skillsEyebrow: string;
+  skillsTitle: string;
+  skillsIntro: string;
+  contactEyebrow: string;
+  contactTitle: string;
+  contactIntro: string;
+  name: string;
+  email: string;
+  message: string;
+  namePlaceholder: string;
+  emailPlaceholder: string;
+  messagePlaceholder: string;
+  send: string;
+  sent: string;
+  findMe: string;
+  rights: string;
+};
+
+export const projectsByLanguage: Record<Language, Project[]> = {
+  es: [
   {
     title: "Predicción de Churn de Clientes",
     description:
@@ -44,7 +77,42 @@ export const projects: Project[] = [
     github: "https://github.com/matematik-isto/cellphone_plans_project",
     demo: "#",
   },
-];
+  ],
+  en: [
+    {
+      title: "Customer Churn Prediction",
+      description:
+        "Machine learning model designed to predict which customers would cancel their subscription, enabling proactive retention and targeted campaigns.",
+      metricLabel: "Accuracy",
+      metricValue: "94%",
+      technologies: ["Python", "Scikit-learn", "SQL"],
+      github: "https://github.com/",
+      demo: "#",
+    },
+    {
+      title: "Chicago Taxis: Weather and Demand",
+      description:
+        "Analysis of Chicago taxi trip records combining API data and SQL queries to determine whether weather conditions affect taxi usage.",
+      metricLabel: "Integrated data sources",
+      metricValue: "API + SQL",
+      technologies: ["Python", "SQL", "Jupyter"],
+      github: "https://github.com/matematik-isto/chicago_taxis_project",
+      demo: "#",
+    },
+    {
+      title: "Mobile Plans: Profitability Analysis",
+      description:
+        "Analysis of Megaline's Surf and Ultimate plans using data from 500 customers—calls, messages, and internet usage—to identify the most profitable plan and optimize the advertising budget.",
+      metricLabel: "Customers analyzed",
+      metricValue: "500",
+      technologies: ["Python", "Pandas", "Seaborn"],
+      github: "https://github.com/matematik-isto/cellphone_plans_project",
+      demo: "#",
+    },
+  ],
+};
+
+export const projects = projectsByLanguage.es;
 
 export const skillCategories: SkillCategory[] = [
   {
@@ -73,6 +141,11 @@ export const skillCategories: SkillCategory[] = [
   },
 ];
 
+export const skillCategoryTitles: Record<Language, string[]> = {
+  es: ["Lenguajes", "Machine Learning", "Visualización"],
+  en: ["Languages", "Machine Learning", "Visualization"],
+};
+
 export const profile = {
   name: "Ramón Correa Ramírez",
   role: "Científico de Datos",
@@ -80,5 +153,66 @@ export const profile = {
   links: {
     github: "https://github.com/matematik-isto",
     linkedin: "https://www.linkedin.com/in/ram%C3%B3n-correa/",
+  },
+};
+
+export const portfolioCopy: Record<Language, PortfolioCopy> = {
+  es: {
+    nav: { home: "Inicio", projects: "Proyectos", skills: "Habilidades", contact: "Contacto" },
+    role: "Científico de Datos",
+    bio: "Transformo datos en decisiones. Diseño modelos predictivos y dashboards que ayudan a equipos a entender su negocio y actuar con confianza.",
+    banner: "Datos que explican. Modelos que anticipan.",
+    heroProjects: "Ver proyectos",
+    heroContact: "Contacto",
+    projectsEyebrow: "Proyectos",
+    projectsTitle: "Trabajo seleccionado",
+    projectsIntro: "Modelos predictivos, análisis y dashboards que generan impacto medible.",
+    github: "GitHub",
+    demo: "Ver demo",
+    skillsEyebrow: "Habilidades",
+    skillsTitle: "Stack técnico",
+    skillsIntro: "Herramientas con las que construyo soluciones de datos de extremo a extremo.",
+    contactEyebrow: "Contacto",
+    contactTitle: "Hablemos",
+    contactIntro: "¿Tienes un proyecto o una oportunidad? Escríbeme o conecta en redes.",
+    name: "Nombre",
+    email: "Email",
+    message: "Mensaje",
+    namePlaceholder: "Tu nombre",
+    emailPlaceholder: "tu@correo.com",
+    messagePlaceholder: "Cuéntame sobre tu proyecto…",
+    send: "Enviar mensaje",
+    sent: "¡Gracias! Tu mensaje fue enviado correctamente.",
+    findMe: "También puedes encontrarme en:",
+    rights: "Todos los derechos reservados.",
+  },
+  en: {
+    nav: { home: "Home", projects: "Projects", skills: "Skills", contact: "Contact" },
+    role: "Data Scientist",
+    bio: "I turn data into decisions. I design predictive models and dashboards that help teams understand their business and act with confidence.",
+    banner: "Data that explains. Models that anticipate.",
+    heroProjects: "View projects",
+    heroContact: "Contact",
+    projectsEyebrow: "Projects",
+    projectsTitle: "Selected work",
+    projectsIntro: "Predictive models, analysis, and dashboards that create measurable impact.",
+    github: "GitHub",
+    demo: "View demo",
+    skillsEyebrow: "Skills",
+    skillsTitle: "Technical stack",
+    skillsIntro: "Tools I use to build end-to-end data solutions.",
+    contactEyebrow: "Contact",
+    contactTitle: "Let's talk",
+    contactIntro: "Have a project or an opportunity? Send me a message or connect with me online.",
+    name: "Name",
+    email: "Email",
+    message: "Message",
+    namePlaceholder: "Your name",
+    emailPlaceholder: "you@email.com",
+    messagePlaceholder: "Tell me about your project…",
+    send: "Send message",
+    sent: "Thank you! Your message was sent successfully.",
+    findMe: "You can also find me on:",
+    rights: "All rights reserved.",
   },
 };
