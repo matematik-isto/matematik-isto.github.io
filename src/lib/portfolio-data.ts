@@ -1,3 +1,7 @@
+import dashboardExec from "@/assets/marketing-dashboard-executive-summary.png.asset.json";
+import dashboardModel from "@/assets/marketing-dashboard-semantic-model.png.asset.json";
+import dashboardDb from "@/assets/marketing-dashboard-database.png.asset.json";
+
 export type Project = {
   title: string;
   description: string;
@@ -6,6 +10,7 @@ export type Project = {
   technologies: string[];
   github: string;
   demo: string;
+  demoGallery?: boolean;
 };
 
 export type SkillCategory = {
@@ -14,6 +19,8 @@ export type SkillCategory = {
 };
 
 export type Language = "es" | "en";
+
+export type DemoImage = { src: string; caption: string };
 
 export type PortfolioCopy = {
   nav: { home: string; projects: string; skills: string; contact: string };
@@ -77,6 +84,17 @@ export const projectsByLanguage: Record<Language, Project[]> = {
     github: "https://github.com/matematik-isto/cellphone_plans_project",
     demo: "#",
   },
+  {
+    title: "Dashboard de Marketing en Power BI",
+    description:
+      "Dashboard de Power BI para una empresa de marketing digital: selección de trimestre, tarjetas de KPI con su variación respecto al trimestre anterior, gráfica de gastos anuales y tablas de desempeño de canales y campañas. Los datos se almacenan en una base de datos PostgreSQL.",
+    metricLabel: "KPIs por trimestre",
+    metricValue: "8",
+    technologies: ["Power BI", "PostgreSQL", "SQL", "DAX"],
+    github: "https://github.com/matematik-isto/marketing_dashboard",
+    demo: "#",
+    demoGallery: true,
+  },
   ],
   en: [
     {
@@ -108,6 +126,17 @@ export const projectsByLanguage: Record<Language, Project[]> = {
       technologies: ["Python", "Pandas", "Seaborn"],
       github: "https://github.com/matematik-isto/cellphone_plans_project",
       demo: "#",
+    },
+    {
+      title: "Power BI Marketing Dashboard",
+      description:
+        "Power BI dashboard for a digital marketing company: quarter selection, KPI cards with quarter-over-quarter changes, annual spend chart, and channel and campaign performance tables. Data is stored in a PostgreSQL database.",
+      metricLabel: "KPIs per quarter",
+      metricValue: "8",
+      technologies: ["Power BI", "PostgreSQL", "SQL", "DAX"],
+      github: "https://github.com/matematik-isto/marketing_dashboard",
+      demo: "#",
+      demoGallery: true,
     },
   ],
 };
@@ -144,6 +173,43 @@ export const skillCategories: SkillCategory[] = [
 export const skillCategoryTitles: Record<Language, string[]> = {
   es: ["Lenguajes", "Machine Learning", "Visualización"],
   en: ["Languages", "Machine Learning", "Visualization"],
+};
+
+export const demoGalleryByLanguage: Record<Language, DemoImage[]> = {
+  es: [
+    {
+      src: dashboardExec.url,
+      caption:
+        "Resumen ejecutivo: selección de trimestre, tarjetas de KPI con su variación respecto al trimestre anterior, gráfica anual y tablas de desempeño por canal, fuente y campaña.",
+    },
+    {
+      src: dashboardModel.url,
+      caption:
+        "Modelo semántico: medidas de KPI (gasto, CPM, CTR, CPC, impresiones, conversiones…) y relaciones entre canales, fuentes y campañas.",
+    },
+    {
+      src: dashboardDb.url,
+      caption:
+        "Base de datos PostgreSQL: tablas de campañas, canales, fuentes y datos de marketing que alimentan el dashboard.",
+    },
+  ],
+  en: [
+    {
+      src: dashboardExec.url,
+      caption:
+        "Executive summary: quarter selector, KPI cards showing change versus the previous quarter, annual chart, and channel, source, and campaign performance tables.",
+    },
+    {
+      src: dashboardModel.url,
+      caption:
+        "Semantic model: KPI measures (spend, CPM, CTR, CPC, impressions, conversions…) and relationships between channels, sources, and campaigns.",
+    },
+    {
+      src: dashboardDb.url,
+      caption:
+        "PostgreSQL database: campaign, channel, source, and marketing data tables that feed the dashboard.",
+    },
+  ],
 };
 
 export const profile = {
