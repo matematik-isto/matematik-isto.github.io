@@ -175,6 +175,43 @@ export const skillCategoryTitles: Record<Language, string[]> = {
   en: ["Languages", "Machine Learning", "Visualization"],
 };
 
+export const demoGalleryByLanguage: Record<Language, DemoImage[]> = {
+  es: [
+    {
+      src: dashboardExec.url,
+      caption:
+        "Resumen ejecutivo: selección de trimestre, tarjetas de KPI con su variación respecto al trimestre anterior, gráfica anual y tablas de desempeño por canal, fuente y campaña.",
+    },
+    {
+      src: dashboardModel.url,
+      caption:
+        "Modelo semántico: medidas de KPI (gasto, CPM, CTR, CPC, impresiones, conversiones…) y relaciones entre canales, fuentes y campañas.",
+    },
+    {
+      src: dashboardDb.url,
+      caption:
+        "Base de datos PostgreSQL: tablas de campañas, canales, fuentes y datos de marketing que alimentan el dashboard.",
+    },
+  ],
+  en: [
+    {
+      src: dashboardExec.url,
+      caption:
+        "Executive summary: quarter selector, KPI cards showing change versus the previous quarter, annual chart, and channel, source, and campaign performance tables.",
+    },
+    {
+      src: dashboardModel.url,
+      caption:
+        "Semantic model: KPI measures (spend, CPM, CTR, CPC, impressions, conversions…) and relationships between channels, sources, and campaigns.",
+    },
+    {
+      src: dashboardDb.url,
+      caption:
+        "PostgreSQL database: campaign, channel, source, and marketing data tables that feed the dashboard.",
+    },
+  ],
+};
+
 export const profile = {
   name: "Ramón Correa Ramírez",
   role: "Científico de Datos",
