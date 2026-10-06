@@ -19,13 +19,21 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import {
   projectsByLanguage,
   skillCategories,
   skillCategoryTitles,
+  demoGalleryByLanguage,
   profile,
   portfolioCopy,
   type Language,
   type PortfolioCopy,
+  type DemoImage,
 } from "@/lib/portfolio-data";
 import profilePhoto from "@/assets/perfil.png.asset.json";
 import dataScienceBanner from "@/assets/banner-datos.png.asset.json";
