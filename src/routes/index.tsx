@@ -201,7 +201,9 @@ function Hero({ copy }: { copy: PortfolioCopy }) {
   );
 }
 
-function ProjectCard({ project, copy }: { project: (typeof projectsByLanguage.es)[number]; copy: PortfolioCopy }) {
+function ProjectCard({ project, copy, gallery }: { project: (typeof projectsByLanguage.es)[number]; copy: PortfolioCopy; gallery: DemoImage[] }) {
+  const [demoOpen, setDemoOpen] = useState(false);
+
   return (
     <Card className="group relative overflow-hidden border-border bg-card shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-accent/50 hover:shadow-lg">
       <CardContent className="flex h-full flex-col p-6">
@@ -247,17 +249,50 @@ function ProjectCard({ project, copy }: { project: (typeof projectsByLanguage.es
                <Github className="mr-2 size-4" /> {copy.github}
             </a>
           </Button>
-          <Button
-            asChild
-            size="sm"
-            className="bg-accent text-accent-foreground hover:bg-accent/90"
-          >
-            <a href={project.demo} target="_blank" rel="noopener noreferrer">
+          {project.demoGallery ? (
+            <Button
+              size="sm"
+              className="bg-accent text-accent-foreground hover:bg-accent/90"
+              onClick={() => setDemoOpen(true)}
+            >
                {copy.demo} <ExternalLink className="ml-2 size-4" />
-            </a>
-          </Button>
+            </Button>
+          ) : (
+            <Button
+              asChild
+              size="sm"
+              className="bg-accent text-accent-foreground hover:bg-accent/90"
+            >
+              <a href={project.demo} target="_blank" rel="noopener noreferrer">
+                 {copy.demo} <ExternalLink className="ml-2 size-4" />
+              </a>
+            </Button>
+          )}
         </div>
       </CardContent>
+
+      <Dialog open={demoOpen} onOpenChange={setDemoOpen}>
+        <DialogContent className="max-h-[85vh] max-w-4xl overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle>{project.title}</DialogTitle>
+          </DialogHeader>
+          <div className="space-y-6">
+            {gallery.map((image) => (
+              <figure key={image.src} className="space-y-2">
+                <img
+                  src={image.src}
+                  alt={image.caption}
+                  loading="lazy"
+                  className="w-full rounded-md border border-border bg-card"
+                />
+                <figcaption className="text-sm leading-relaxed text-muted-foreground">
+                  {image.caption}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </DialogContent>
+      </Dialog>
     </Card>
   );
 }
