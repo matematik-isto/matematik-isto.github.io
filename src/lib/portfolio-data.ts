@@ -1,3 +1,7 @@
+import dashboardExec from "@/assets/marketing-dashboard-executive-summary.png.asset.json";
+import dashboardModel from "@/assets/marketing-dashboard-semantic-model.png.asset.json";
+import dashboardDb from "@/assets/marketing-dashboard-database.png.asset.json";
+
 export type Project = {
   title: string;
   description: string;
@@ -6,6 +10,7 @@ export type Project = {
   technologies: string[];
   github: string;
   demo: string;
+  demoGallery?: boolean;
 };
 
 export type SkillCategory = {
@@ -14,6 +19,8 @@ export type SkillCategory = {
 };
 
 export type Language = "es" | "en";
+
+export type DemoImage = { src: string; caption: string };
 
 export type PortfolioCopy = {
   nav: { home: string; projects: string; skills: string; contact: string };
