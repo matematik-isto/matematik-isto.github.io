@@ -127,6 +127,17 @@ export const projectsByLanguage: Record<Language, Project[]> = {
       github: "https://github.com/matematik-isto/cellphone_plans_project",
       demo: "#",
     },
+    {
+      title: "Power BI Marketing Dashboard",
+      description:
+        "Power BI dashboard for a digital marketing company: quarter selection, KPI cards with quarter-over-quarter changes, annual spend chart, and channel and campaign performance tables. Data is stored in a PostgreSQL database.",
+      metricLabel: "KPIs per quarter",
+      metricValue: "8",
+      technologies: ["Power BI", "PostgreSQL", "SQL", "DAX"],
+      github: "https://github.com/matematik-isto/marketing_dashboard",
+      demo: "#",
+      demoGallery: true,
+    },
   ],
 };
 
