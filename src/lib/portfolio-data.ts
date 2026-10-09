@@ -1,6 +1,9 @@
 import dashboardExec from "@/assets/marketing-dashboard-executive-summary.png.asset.json";
 import dashboardModel from "@/assets/marketing-dashboard-semantic-model.png.asset.json";
 import dashboardDb from "@/assets/marketing-dashboard-database.png.asset.json";
+import churnMonths from "@/assets/churn-months.png.asset.json";
+import churnCharges from "@/assets/churn-charges.png.asset.json";
+import churnRoc from "@/assets/churn-roc.png.asset.json";
 
 export type Project = {
   title: string;
@@ -11,6 +14,7 @@ export type Project = {
   github: string;
   demo: string;
   demoGallery?: boolean;
+  demoPage?: boolean;
 };
 
 export type SkillCategory = {
