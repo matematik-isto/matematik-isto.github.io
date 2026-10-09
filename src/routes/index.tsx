@@ -29,11 +29,13 @@ import {
   skillCategories,
   skillCategoryTitles,
   demoGalleryByLanguage,
+  churnDemoByLanguage,
   profile,
   portfolioCopy,
   type Language,
   type PortfolioCopy,
   type DemoImage,
+  type ProjectDemo,
 } from "@/lib/portfolio-data";
 import profilePhoto from "@/assets/perfil.png.asset.json";
 import dataScienceBanner from "@/assets/banner-datos.png.asset.json";
@@ -201,7 +203,7 @@ function Hero({ copy }: { copy: PortfolioCopy }) {
   );
 }
 
-function ProjectCard({ project, copy, gallery }: { project: (typeof projectsByLanguage.es)[number]; copy: PortfolioCopy; gallery: DemoImage[] }) {
+function ProjectCard({ project, copy, gallery, demoPage }: { project: (typeof projectsByLanguage.es)[number]; copy: PortfolioCopy; gallery: DemoImage[]; demoPage: ProjectDemo }) {
   const [demoOpen, setDemoOpen] = useState(false);
 
   return (

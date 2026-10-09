@@ -1,6 +1,9 @@
 import dashboardExec from "@/assets/marketing-dashboard-executive-summary.png.asset.json";
 import dashboardModel from "@/assets/marketing-dashboard-semantic-model.png.asset.json";
 import dashboardDb from "@/assets/marketing-dashboard-database.png.asset.json";
+import churnMonths from "@/assets/churn-months.png.asset.json";
+import churnCharges from "@/assets/churn-charges.png.asset.json";
+import churnRoc from "@/assets/churn-roc.png.asset.json";
 
 export type Project = {
   title: string;
@@ -11,6 +14,7 @@ export type Project = {
   github: string;
   demo: string;
   demoGallery?: boolean;
+  demoPage?: boolean;
 };
 
 export type SkillCategory = {
@@ -61,8 +65,9 @@ export const projectsByLanguage: Record<Language, Project[]> = {
     metricLabel: "Precisión",
     metricValue: "94%",
     technologies: ["Python", "Scikit-learn", "SQL"],
-    github: "https://github.com/",
-    demo: "https://concrete-breakfast-589.notion.site/Predicci-n-de-churn-de-clientes-3dd0287441db80bfae21c9e11e6c4132",
+    github: "https://github.com/matematik-isto/ml-churn-analysis-final-project",
+    demo: "#",
+    demoPage: true,
   },
   {
     title: "Chicago Taxis: Clima y Demanda",
@@ -104,8 +109,9 @@ export const projectsByLanguage: Record<Language, Project[]> = {
       metricLabel: "Accuracy",
       metricValue: "94%",
       technologies: ["Python", "Scikit-learn", "SQL"],
-      github: "https://github.com/",
-      demo: "https://concrete-breakfast-589.notion.site/Predicci-n-de-churn-de-clientes-3dd0287441db80bfae21c9e11e6c4132",
+      github: "https://github.com/matematik-isto/ml-churn-analysis-final-project",
+      demo: "#",
+      demoPage: true,
     },
     {
       title: "Chicago Taxis: Weather and Demand",
@@ -210,6 +216,278 @@ export const demoGalleryByLanguage: Record<Language, DemoImage[]> = {
         "PostgreSQL database: campaign, channel, source, and marketing data tables that feed the dashboard.",
     },
   ],
+};
+
+export type DemoBlock = { text?: string; items?: string[] };
+
+export type DemoSection = { heading: string; blocks: DemoBlock[] };
+
+export type ProjectDemo = {
+  sections: DemoSection[];
+  screenshots: DemoImage[];
+  repoLabel: string;
+  repoUrl: string;
+};
+
+export const churnDemoByLanguage: Record<Language, ProjectDemo> = {
+  es: {
+    repoLabel: "Repositorio en GitHub",
+    repoUrl: "https://github.com/matematik-isto/ml-churn-analysis-final-project",
+    sections: [
+      {
+        heading: "Resumen",
+        blocks: [
+          {
+            text: "Megaline ofrece dos tarifas de prepago: Surf y Ultimate. El departamento comercial quiere saber cuál de los planes genera más ingresos para poder ajustar el presupuesto de publicidad.",
+          },
+          {
+            text: "Surf",
+            items: [
+              "Pago mensual: $20.",
+              "500 minutos al mes, 50 SMS y 15 GB de datos.",
+              "Si se exceden los límites del paquete: 1 minuto: 3 centavos; 1 SMS: 3 centavos; 1 GB de datos: $10.",
+            ],
+          },
+          {
+            text: "Ultimate",
+            items: [
+              "Pago mensual: $70.",
+              "3000 minutos al mes, 1000 SMS y 30 GB de datos.",
+              "Si se exceden los límites del paquete: 1 minuto: 1 centavo; 1 SMS: 1 centavo; 1 GB de datos: $7.",
+            ],
+          },
+        ],
+      },
+      {
+        heading: "Datasets",
+        blocks: [
+          {
+            text: "contract — Datos del contrato de los clientes. 7043 registros. Oct 2010 - Feb 2020.",
+            items: [
+              "customer_id",
+              "begin_date",
+              "end_date",
+              "type",
+              "paperless_billing",
+              "payment_method",
+              "monthly_charges",
+              "total_charges",
+            ],
+          },
+          {
+            text: "personal — Información personal de los clientes. 7043 registros.",
+            items: ["customer_id", "gender", "senior_citizen", "partner", "dependents"],
+          },
+          {
+            text: "internet — Información sobre el servicio de internet contratado por cada cliente. 5516 registros. Si un id de cliente no aparece aquí se entiende que no contrató internet.",
+            items: [
+              "customer_id",
+              "internet_service",
+              "online_security",
+              "online_backup",
+              "device_protection",
+              "tech_support",
+              "streaming_tv",
+              "streaming_movies",
+            ],
+          },
+          {
+            text: "phone — Información sobre el servicio de telefonía contratado por cada cliente. 6360 registros. Si un id de cliente no aparece aquí se entiende que no contrató el servicio de teléfono.",
+            items: ["customer_id", "multiple_lines"],
+          },
+        ],
+      },
+      {
+        heading: "Metodología",
+        blocks: [
+          { items: ["Limpieza de datos y preprocesamiento", "Análisis Exploratorio de Datos (EDA)"] },
+          {
+            text: "Creación de modelos predictivos",
+            items: ["Balanceo de clases", "Imputación", "Validación cruzada"],
+          },
+          {
+            text: "Comparación de modelos",
+            items: ["Decision Tree", "LightGBM", "Redes Neuronales"],
+          },
+        ],
+      },
+      {
+        heading: "Resultados e Ideas Clave",
+        blocks: [
+          { items: ["La tasa de fuga para el total del conjunto de datos es del 26.5%."] },
+          {
+            text: "Se encontraron variables con impacto en la decisión del cliente de abandonar el servicio:",
+            items: [
+              "Antigüedad: a mayor cantidad de meses, menor probabilidad de fuga.",
+              "Servicio de fibra óptica: estos clientes suelen fugarse más. Esto plantea la pregunta sobre si el servicio es bueno.",
+              "Pago mediante cheque electrónico: estos clientes también fugan más. Se sugiere revisar si el proceso para pagar por este medio funciona apropiadamente.",
+            ],
+          },
+          {
+            items: [
+              "Se desarrolló un modelo predictivo basado en LightGBM con una métrica de ROC-AUC = 0.84.",
+            ],
+          },
+        ],
+      },
+      {
+        heading: "Herramientas y tecnologías",
+        blocks: [
+          {
+            text: "Python",
+            items: ["pandas", "matplotlib", "scikit-learn", "LightGBM", "XGBoost", "TensorFlow"],
+          },
+          { items: ["Machine Learning"] },
+        ],
+      },
+    ],
+    screenshots: [
+      {
+        src: churnMonths.url,
+        caption:
+          "Churn respecto a la cantidad de meses como cliente: distribución de clientes y porcentaje de fuga por antigüedad.",
+      },
+      {
+        src: churnCharges.url,
+        caption:
+          "Churn respecto a los cargos mensuales: distribución de clientes y porcentaje de fuga según el cargo mensual.",
+      },
+      {
+        src: churnRoc.url,
+        caption:
+          "Modelo LightGBM: valor F1 según el umbral y curva ROC (ROC AUC = 0.85 en entrenamiento, 0.83 en prueba).",
+      },
+    ],
+  },
+  en: {
+    repoLabel: "GitHub repository",
+    repoUrl: "https://github.com/matematik-isto/ml-churn-analysis-final-project",
+    sections: [
+      {
+        heading: "Summary",
+        blocks: [
+          {
+            text: "Megaline offers two prepaid plans: Surf and Ultimate. The commercial department wants to know which plan generates more revenue in order to adjust the advertising budget.",
+          },
+          {
+            text: "Surf",
+            items: [
+              "Monthly fee: $20.",
+              "500 minutes per month, 50 SMS and 15 GB of data.",
+              "If package limits are exceeded: 1 minute: 3 cents; 1 SMS: 3 cents; 1 GB of data: $10.",
+            ],
+          },
+          {
+            text: "Ultimate",
+            items: [
+              "Monthly fee: $70.",
+              "3000 minutes per month, 1000 SMS and 30 GB of data.",
+              "If package limits are exceeded: 1 minute: 1 cent; 1 SMS: 1 cent; 1 GB of data: $7.",
+            ],
+          },
+        ],
+      },
+      {
+        heading: "Datasets",
+        blocks: [
+          {
+            text: "contract — Customer contract data. 7043 records. Oct 2010 - Feb 2020.",
+            items: [
+              "customer_id",
+              "begin_date",
+              "end_date",
+              "type",
+              "paperless_billing",
+              "payment_method",
+              "monthly_charges",
+              "total_charges",
+            ],
+          },
+          {
+            text: "personal — Customer personal information. 7043 records.",
+            items: ["customer_id", "gender", "senior_citizen", "partner", "dependents"],
+          },
+          {
+            text: "internet — Information about the internet service contracted by each customer. 5516 records. If a customer id does not appear here, it means they did not contract internet.",
+            items: [
+              "customer_id",
+              "internet_service",
+              "online_security",
+              "online_backup",
+              "device_protection",
+              "tech_support",
+              "streaming_tv",
+              "streaming_movies",
+            ],
+          },
+          {
+            text: "phone — Information about the phone service contracted by each customer. 6360 records. If a customer id does not appear here, it means they did not contract the phone service.",
+            items: ["customer_id", "multiple_lines"],
+          },
+        ],
+      },
+      {
+        heading: "Methodology",
+        blocks: [
+          { items: ["Data cleaning and preprocessing", "Exploratory Data Analysis (EDA)"] },
+          {
+            text: "Predictive model building",
+            items: ["Class balancing", "Imputation", "Cross-validation"],
+          },
+          {
+            text: "Model comparison",
+            items: ["Decision Tree", "LightGBM", "Neural Networks"],
+          },
+        ],
+      },
+      {
+        heading: "Results and Key Insights",
+        blocks: [
+          { items: ["The churn rate for the entire dataset is 26.5%."] },
+          {
+            text: "Variables with an impact on the customer's decision to leave the service were found:",
+            items: [
+              "Tenure: the more months as a customer, the lower the probability of churn.",
+              "Fiber optic service: these customers tend to churn more. This raises the question of whether the service is good.",
+              "Payment by electronic check: these customers also churn more. It is suggested to review whether the payment process through this method works properly.",
+            ],
+          },
+          {
+            items: [
+              "A predictive model based on LightGBM was developed with a ROC-AUC metric of 0.84.",
+            ],
+          },
+        ],
+      },
+      {
+        heading: "Tools and technologies",
+        blocks: [
+          {
+            text: "Python",
+            items: ["pandas", "matplotlib", "scikit-learn", "LightGBM", "XGBoost", "TensorFlow"],
+          },
+          { items: ["Machine Learning"] },
+        ],
+      },
+    ],
+    screenshots: [
+      {
+        src: churnMonths.url,
+        caption:
+          "Churn versus number of months as a customer: customer distribution and churn percentage by tenure.",
+      },
+      {
+        src: churnCharges.url,
+        caption:
+          "Churn versus monthly charges: customer distribution and churn percentage by monthly charge.",
+      },
+      {
+        src: churnRoc.url,
+        caption:
+          "LightGBM model: F1 score by threshold and ROC curve (ROC AUC = 0.85 on train, 0.83 on test).",
+      },
+    ],
+  },
 };
 
 export const profile = {
