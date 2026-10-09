@@ -62,7 +62,7 @@ export const projectsByLanguage: Record<Language, Project[]> = {
     metricValue: "94%",
     technologies: ["Python", "Scikit-learn", "SQL"],
     github: "https://github.com/",
-    demo: "#",
+    demo: "https://concrete-breakfast-589.notion.site/Predicci-n-de-churn-de-clientes-3dd0287441db80bfae21c9e11e6c4132",
   },
   {
     title: "Chicago Taxis: Clima y Demanda",
@@ -105,7 +105,7 @@ export const projectsByLanguage: Record<Language, Project[]> = {
       metricValue: "94%",
       technologies: ["Python", "Scikit-learn", "SQL"],
       github: "https://github.com/",
-      demo: "#",
+      demo: "https://concrete-breakfast-589.notion.site/Predicci-n-de-churn-de-clientes-3dd0287441db80bfae21c9e11e6c4132",
     },
     {
       title: "Chicago Taxis: Weather and Demand",
