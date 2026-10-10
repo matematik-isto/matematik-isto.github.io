@@ -251,7 +251,7 @@ function ProjectCard({ project, copy, gallery, demoPage }: { project: (typeof pr
                <Github className="mr-2 size-4" /> {copy.github}
             </a>
           </Button>
-          {project.demoGallery ? (
+          {project.demoGallery || project.demoPage ? (
             <Button
               size="sm"
               className="bg-accent text-accent-foreground hover:bg-accent/90"
@@ -278,6 +278,50 @@ function ProjectCard({ project, copy, gallery, demoPage }: { project: (typeof pr
           <DialogHeader>
             <DialogTitle>{project.title}</DialogTitle>
           </DialogHeader>
+          {project.demoPage ? (
+            <div className="space-y-8">
+              {demoPage.sections.map((section) => (
+                <section key={section.heading} className="space-y-3">
+                  <h3 className="text-base font-semibold text-accent">{section.heading}</h3>
+                  {section.blocks.map((block, i) => (
+                    <div key={i} className="space-y-2">
+                      {block.text && (
+                        <p className="text-sm leading-relaxed text-foreground">{block.text}</p>
+                      )}
+                      {block.items && (
+                        <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
+                          {block.items.map((item) => (
+                            <li key={item}>{item}</li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                  ))}
+                </section>
+              ))}
+              <section className="space-y-4">
+                <h3 className="text-base font-semibold text-accent">Capturas / Screenshots</h3>
+                {demoPage.screenshots.map((image) => (
+                  <figure key={image.src} className="space-y-2">
+                    <img
+                      src={image.src}
+                      alt={image.caption}
+                      loading="lazy"
+                      className="w-full rounded-md border border-border bg-card"
+                    />
+                    <figcaption className="text-sm leading-relaxed text-muted-foreground">
+                      {image.caption}
+                    </figcaption>
+                  </figure>
+                ))}
+              </section>
+              <Button asChild variant="outline" className="border-border bg-transparent">
+                <a href={demoPage.repoUrl} target="_blank" rel="noopener noreferrer">
+                  <Github className="mr-2 size-4" /> {demoPage.repoLabel}
+                </a>
+              </Button>
+            </div>
+          ) : (
           <div className="space-y-6">
             {gallery.map((image) => (
               <figure key={image.src} className="space-y-2">
@@ -293,6 +337,7 @@ function ProjectCard({ project, copy, gallery, demoPage }: { project: (typeof pr
               </figure>
             ))}
           </div>
+          )}
         </DialogContent>
       </Dialog>
     </Card>
@@ -302,6 +347,7 @@ function ProjectCard({ project, copy, gallery, demoPage }: { project: (typeof pr
 function Projects({ language, copy }: { language: Language; copy: PortfolioCopy }) {
   const projects = projectsByLanguage[language];
   const gallery = demoGalleryByLanguage[language];
+  const churnDemo = churnDemoByLanguage[language];
   return (
     <section id="proyectos" className="scroll-mt-24 py-24">
       <div className="mx-auto max-w-5xl px-6">
@@ -318,7 +364,7 @@ function Projects({ language, copy }: { language: Language; copy: PortfolioCopy 
         </div>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project) => (
-             <ProjectCard key={project.title} project={project} copy={copy} gallery={gallery} />
+             <ProjectCard key={project.title} project={project} copy={copy} gallery={gallery} demoPage={churnDemo} />
           ))}
         </div>
       </div>
