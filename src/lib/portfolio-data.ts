@@ -495,6 +495,45 @@ export const churnDemoByLanguage: Record<Language, ProjectDemo> = {
   },
 };
 
+export const taxiDemoByLanguage: Record<Language, ProjectDemo> = {
+  "es": {
+    "repoLabel": "Repositorio en GitHub",
+    "repoUrl": "https://github.com/matematik-isto/chicago_taxis_project",
+    "screenshotsHeading": "Capturas de pantalla",
+    "sections": [
+      {"heading":"Resumen","blocks":[{"text":"En este proyecto se analizan los datos de viajes de taxis en Chicago. Se demuestra manejo de SQL, EDA y pruebas de hipótesis."}]},
+      {"heading":"Dataset","blocks":[
+        {"text":"trips — Más de 24 millones de registros. Periodo: 2017. Variables:","items":["trip_id","cab_id","start_ts","end_ts","duration_seconds","distance_miles","pickup_location_id","dropoff_location_id"]},
+        {"text":"cabs — Más de 5 mil registros. Periodo: 2017. Variables:","items":["cab_id","vehicle_id","company_name"]},
+        {"text":"neighborhoods — 78 registros. Áreas comunitarias de Chicago. Variables:","items":["neigborhood_id","name"]},
+        {"text":"weather_records — Más de 5 mil registros. Periodo: 2017. Variables:","items":["record_id","ts","temperature","description"]}
+      ]},
+      {"heading":"Metodología","blocks":[{"items":["Recolección de datos de páginas web, API y archivos CSV","Consolidar datos en bases de datos SQL","Análisis Exploratorio de Datos (EDA)","Pruebas de hipótesis"]}]},
+      {"heading":"Resultados e Ideas Clave","blocks":[{"items":["Las pruebas de hipótesis apoyan la idea de que en condiciones de lluvia aumenta el número de viajes de taxis.","4 de las 77 áreas comunitarias concentran el 50% de los viajes."]}]},
+      {"heading":"Herramientas y tecnologías","blocks":[{"items":["Python: pandas, seaborn, scipy.","SQL: SQL Server, sqlite."]}]}
+    ],
+    "screenshots": []
+  },
+  "en": {
+    "repoLabel": "GitHub repository",
+    "repoUrl": "https://github.com/matematik-isto/chicago_taxis_project",
+    "screenshotsHeading": "Screenshots",
+    "sections": [
+      {"heading":"Summary","blocks":[{"text":"This project analyzes taxi trip data in Chicago, demonstrating SQL proficiency, exploratory data analysis (EDA), and hypothesis testing."}]},
+      {"heading":"Dataset","blocks":[
+        {"text":"trips — More than 24 million records. Period: 2017. Variables:","items":["trip_id","cab_id","start_ts","end_ts","duration_seconds","distance_miles","pickup_location_id","dropoff_location_id"]},
+        {"text":"cabs — More than 5,000 records. Period: 2017. Variables:","items":["cab_id","vehicle_id","company_name"]},
+        {"text":"neighborhoods — 78 records. Chicago community areas. Variables:","items":["neigborhood_id","name"]},
+        {"text":"weather_records — More than 5,000 records. Period: 2017. Variables:","items":["record_id","ts","temperature","description"]}
+      ]},
+      {"heading":"Methodology","blocks":[{"items":["Collect data from web pages, APIs, and CSV files","Consolidate data in SQL databases","Exploratory Data Analysis (EDA)","Hypothesis testing"]}]},
+      {"heading":"Results and Key Insights","blocks":[{"items":["Hypothesis tests support the idea that the number of taxi trips increases in rainy conditions.","4 of the 77 community areas account for 50% of trips."]}]},
+      {"heading":"Tools and technologies","blocks":[{"items":["Python: pandas, seaborn, scipy.","SQL: SQL Server, sqlite."]}]}
+    ],
+    "screenshots": []
+  }
+};
+
 export const profile = {
   name: "Ramón Correa Ramírez",
   role: "Científico de Datos",
