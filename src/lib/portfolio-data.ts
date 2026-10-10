@@ -14,7 +14,7 @@ export type Project = {
   github: string;
   demo: string;
   demoGallery?: boolean;
-  demoPage?: boolean;
+  demoPage?: "churn" | "taxi";
 };
 
 export type SkillCategory = {
@@ -67,7 +67,7 @@ export const projectsByLanguage: Record<Language, Project[]> = {
     technologies: ["Python", "Scikit-learn", "SQL"],
     github: "https://github.com/matematik-isto/ml-churn-analysis-final-project",
     demo: "#",
-    demoPage: true,
+    demoPage: "churn",
   },
   {
     title: "Chicago Taxis: Clima y Demanda",
@@ -78,6 +78,7 @@ export const projectsByLanguage: Record<Language, Project[]> = {
     technologies: ["Python", "SQL", "Jupyter"],
     github: "https://github.com/matematik-isto/chicago_taxis_project",
     demo: "#",
+    demoPage: "taxi",
   },
   {
     title: "Planes de Telefonía: Análisis de Rentabilidad",
@@ -111,7 +112,7 @@ export const projectsByLanguage: Record<Language, Project[]> = {
       technologies: ["Python", "Scikit-learn", "SQL"],
       github: "https://github.com/matematik-isto/ml-churn-analysis-final-project",
       demo: "#",
-      demoPage: true,
+      demoPage: "churn",
     },
     {
       title: "Chicago Taxis: Weather and Demand",
@@ -122,6 +123,7 @@ export const projectsByLanguage: Record<Language, Project[]> = {
       technologies: ["Python", "SQL", "Jupyter"],
       github: "https://github.com/matematik-isto/chicago_taxis_project",
       demo: "#",
+      demoPage: "taxi",
     },
     {
       title: "Mobile Plans: Profitability Analysis",
@@ -225,12 +227,14 @@ export type DemoSection = { heading: string; blocks: DemoBlock[] };
 export type ProjectDemo = {
   sections: DemoSection[];
   screenshots: DemoImage[];
+  screenshotsHeading: string;
   repoLabel: string;
   repoUrl: string;
 };
 
 export const churnDemoByLanguage: Record<Language, ProjectDemo> = {
   es: {
+    screenshotsHeading: "Capturas",
     repoLabel: "Repositorio en GitHub",
     repoUrl: "https://github.com/matematik-isto/ml-churn-analysis-final-project",
     sections: [
@@ -360,6 +364,7 @@ export const churnDemoByLanguage: Record<Language, ProjectDemo> = {
     ],
   },
   en: {
+    screenshotsHeading: "Screenshots",
     repoLabel: "GitHub repository",
     repoUrl: "https://github.com/matematik-isto/ml-churn-analysis-final-project",
     sections: [

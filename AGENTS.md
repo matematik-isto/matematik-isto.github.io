@@ -10,3 +10,4 @@
 <!-- LOVABLE:END -->
 
 - Keep all user-facing portfolio copy centralized by language in the portfolio data module so both language views remain complete and synchronized.
+- Select embedded project demos using a stable project demo key and reuse the same dialog renderer, so each card displays only its own bilingual content.
