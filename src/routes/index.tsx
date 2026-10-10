@@ -337,6 +337,7 @@ function ProjectCard({ project, copy, gallery, demoPage }: { project: (typeof pr
               </figure>
             ))}
           </div>
+          )}
         </DialogContent>
       </Dialog>
     </Card>
@@ -346,6 +347,7 @@ function ProjectCard({ project, copy, gallery, demoPage }: { project: (typeof pr
 function Projects({ language, copy }: { language: Language; copy: PortfolioCopy }) {
   const projects = projectsByLanguage[language];
   const gallery = demoGalleryByLanguage[language];
+  const churnDemo = churnDemoByLanguage[language];
   return (
     <section id="proyectos" className="scroll-mt-24 py-24">
       <div className="mx-auto max-w-5xl px-6">
@@ -362,7 +364,7 @@ function Projects({ language, copy }: { language: Language; copy: PortfolioCopy 
         </div>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project) => (
-             <ProjectCard key={project.title} project={project} copy={copy} gallery={gallery} />
+             <ProjectCard key={project.title} project={project} copy={copy} gallery={gallery} demoPage={churnDemo} />
           ))}
         </div>
       </div>
