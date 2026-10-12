@@ -4,6 +4,11 @@ import dashboardDb from "@/assets/marketing-dashboard-database.png.asset.json";
 import churnMonths from "@/assets/churn-months.png.asset.json";
 import churnCharges from "@/assets/churn-charges.png.asset.json";
 import churnRoc from "@/assets/churn-roc.png.asset.json";
+import taxiHeader from "@/assets/taxi-header.jpg.asset.json";
+import taxiPlatforms from "@/assets/taxi-analysis-0.png.asset.json";
+import taxiGenres from "@/assets/taxi-analysis-1.png.asset.json";
+import taxiRatings from "@/assets/taxi-analysis-2.png.asset.json";
+import taxiScores from "@/assets/taxi-analysis-3.png.asset.json";
 
 export type Project = {
   title: string;
@@ -225,6 +230,7 @@ export type DemoBlock = { text?: string; items?: string[] };
 export type DemoSection = { heading: string; blocks: DemoBlock[] };
 
 export type ProjectDemo = {
+  cover?: DemoImage;
   sections: DemoSection[];
   screenshots: DemoImage[];
   screenshotsHeading: string;
@@ -497,6 +503,7 @@ export const churnDemoByLanguage: Record<Language, ProjectDemo> = {
 
 export const taxiDemoByLanguage: Record<Language, ProjectDemo> = {
   "es": {
+    cover: { src: taxiHeader.url, caption: "Taxis en Chicago" },
     "repoLabel": "Repositorio en GitHub",
     "repoUrl": "https://github.com/matematik-isto/chicago_taxis_project",
     "screenshotsHeading": "Capturas de pantalla",
@@ -512,9 +519,15 @@ export const taxiDemoByLanguage: Record<Language, ProjectDemo> = {
       {"heading":"Resultados e Ideas Clave","blocks":[{"items":["Las pruebas de hipótesis apoyan la idea de que en condiciones de lluvia aumenta el número de viajes de taxis.","4 de las 77 áreas comunitarias concentran el 50% de los viajes."]}]},
       {"heading":"Herramientas y tecnologías","blocks":[{"items":["Python: pandas, seaborn, scipy.","SQL: SQL Server, sqlite."]}]}
     ],
-    "screenshots": []
+    "screenshots": [
+      { src: taxiPlatforms.url, caption: "Captura de la página original: ventas de videojuegos por plataforma y año." },
+      { src: taxiGenres.url, caption: "Captura de la página original: comparación regional de ventas por género de videojuegos." },
+      { src: taxiRatings.url, caption: "Captura de la página original: proporción de ventas por clasificación ESRB y perfiles regionales de jugadores." },
+      { src: taxiScores.url, caption: "Captura de la página original: comparación de puntuaciones de usuarios en PC y Xbox One." }
+    ]
   },
   "en": {
+    cover: { src: taxiHeader.url, caption: "Taxis in Chicago" },
     "repoLabel": "GitHub repository",
     "repoUrl": "https://github.com/matematik-isto/chicago_taxis_project",
     "screenshotsHeading": "Screenshots",
@@ -530,7 +543,12 @@ export const taxiDemoByLanguage: Record<Language, ProjectDemo> = {
       {"heading":"Results and Key Insights","blocks":[{"items":["Hypothesis tests support the idea that the number of taxi trips increases in rainy conditions.","4 of the 77 community areas account for 50% of trips."]}]},
       {"heading":"Tools and technologies","blocks":[{"items":["Python: pandas, seaborn, scipy.","SQL: SQL Server, sqlite."]}]}
     ],
-    "screenshots": []
+    "screenshots": [
+      { src: taxiPlatforms.url, caption: "Screenshot from the original page: video game sales by platform and year." },
+      { src: taxiGenres.url, caption: "Screenshot from the original page: regional comparison of video game sales by genre." },
+      { src: taxiRatings.url, caption: "Screenshot from the original page: sales proportions by ESRB rating and regional player profiles." },
+      { src: taxiScores.url, caption: "Screenshot from the original page: comparison of user scores on PC and Xbox One." }
+    ]
   }
 };
 

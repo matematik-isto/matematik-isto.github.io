@@ -30,6 +30,7 @@ import {
   skillCategoryTitles,
   demoGalleryByLanguage,
   churnDemoByLanguage,
+  taxiDemoByLanguage,
   profile,
   portfolioCopy,
   type Language,
@@ -203,7 +204,7 @@ function Hero({ copy }: { copy: PortfolioCopy }) {
   );
 }
 
-function ProjectCard({ project, copy, gallery, demoPage }: { project: (typeof projectsByLanguage.es)[number]; copy: PortfolioCopy; gallery: DemoImage[]; demoPage: ProjectDemo }) {
+function ProjectCard({ project, copy, gallery, demoPage }: { project: (typeof projectsByLanguage.es)[number]; copy: PortfolioCopy; gallery: DemoImage[]; demoPage?: ProjectDemo }) {
   const [demoOpen, setDemoOpen] = useState(false);
 
   return (
@@ -278,8 +279,11 @@ function ProjectCard({ project, copy, gallery, demoPage }: { project: (typeof pr
           <DialogHeader>
             <DialogTitle>{project.title}</DialogTitle>
           </DialogHeader>
-          {project.demoPage ? (
+          {demoPage ? (
             <div className="space-y-8">
+              {demoPage.cover && (
+                <img src={demoPage.cover.src} alt={demoPage.cover.caption} className="max-h-72 w-full rounded-md object-cover" />
+              )}
               {demoPage.sections.map((section) => (
                 <section key={section.heading} className="space-y-3">
                   <h3 className="text-base font-semibold text-accent">{section.heading}</h3>
@@ -300,7 +304,7 @@ function ProjectCard({ project, copy, gallery, demoPage }: { project: (typeof pr
                 </section>
               ))}
               <section className="space-y-4">
-                <h3 className="text-base font-semibold text-accent">Capturas / Screenshots</h3>
+                <h3 className="text-base font-semibold text-accent">{demoPage.screenshotsHeading}</h3>
                 {demoPage.screenshots.map((image) => (
                   <figure key={image.src} className="space-y-2">
                     <img
@@ -348,6 +352,7 @@ function Projects({ language, copy }: { language: Language; copy: PortfolioCopy 
   const projects = projectsByLanguage[language];
   const gallery = demoGalleryByLanguage[language];
   const churnDemo = churnDemoByLanguage[language];
+  const taxiDemo = taxiDemoByLanguage[language];
   return (
     <section id="proyectos" className="scroll-mt-24 py-24">
       <div className="mx-auto max-w-5xl px-6">
@@ -364,7 +369,7 @@ function Projects({ language, copy }: { language: Language; copy: PortfolioCopy 
         </div>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project) => (
-             <ProjectCard key={project.title} project={project} copy={copy} gallery={gallery} demoPage={churnDemo} />
+             <ProjectCard key={project.title} project={project} copy={copy} gallery={gallery} demoPage={project.demoPage === "taxi" ? taxiDemo : project.demoPage === "churn" ? churnDemo : undefined} />
           ))}
         </div>
       </div>
