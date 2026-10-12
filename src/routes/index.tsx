@@ -31,6 +31,7 @@ import {
   demoGalleryByLanguage,
   churnDemoByLanguage,
   taxiDemoByLanguage,
+  megalineDemoByLanguage,
   profile,
   portfolioCopy,
   type Language,
@@ -353,6 +354,7 @@ function Projects({ language, copy }: { language: Language; copy: PortfolioCopy 
   const gallery = demoGalleryByLanguage[language];
   const churnDemo = churnDemoByLanguage[language];
   const taxiDemo = taxiDemoByLanguage[language];
+  const megalineDemo = megalineDemoByLanguage[language];
   return (
     <section id="proyectos" className="scroll-mt-24 py-24">
       <div className="mx-auto max-w-5xl px-6">
@@ -369,7 +371,7 @@ function Projects({ language, copy }: { language: Language; copy: PortfolioCopy 
         </div>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project) => (
-             <ProjectCard key={project.title} project={project} copy={copy} gallery={gallery} demoPage={project.demoPage === "taxi" ? taxiDemo : project.demoPage === "churn" ? churnDemo : undefined} />
+              <ProjectCard key={project.title} project={project} copy={copy} gallery={gallery} demoPage={project.demoPage === "megaline" ? megalineDemo : project.demoPage === "taxi" ? taxiDemo : project.demoPage === "churn" ? churnDemo : undefined} />
           ))}
         </div>
       </div>
