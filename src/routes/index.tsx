@@ -204,7 +204,7 @@ function Hero({ copy }: { copy: PortfolioCopy }) {
   );
 }
 
-function ProjectCard({ project, copy, gallery, demoPage }: { project: (typeof projectsByLanguage.es)[number]; copy: PortfolioCopy; gallery: DemoImage[]; demoPage?: ProjectDemo }) {
+function ProjectCard({ project, copy, gallery, demoPage }: { project: (typeof projectsByLanguage.es)[number]; copy: PortfolioCopy; gallery: DemoImage[]; demoPage: ProjectDemo | undefined }) {
   const [demoOpen, setDemoOpen] = useState(false);
 
   return (
