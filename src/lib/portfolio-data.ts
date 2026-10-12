@@ -9,6 +9,11 @@ import taxiPlatforms from "@/assets/taxi-analysis-0.png.asset.json";
 import taxiGenres from "@/assets/taxi-analysis-1.png.asset.json";
 import taxiRatings from "@/assets/taxi-analysis-2.png.asset.json";
 import taxiScores from "@/assets/taxi-analysis-3.png.asset.json";
+import megalineHeader from "@/assets/megaline-header.png.asset.json";
+import megalineAggregation from "@/assets/megaline-analysis-0.png.asset.json";
+import megalineDensity from "@/assets/megaline-analysis-1.png.asset.json";
+import megalineMinutes from "@/assets/megaline-analysis-2.png.asset.json";
+import megalineIncome from "@/assets/megaline-analysis-3.png.asset.json";
 
 export type Project = {
   title: string;
@@ -19,7 +24,7 @@ export type Project = {
   github: string;
   demo: string;
   demoGallery?: boolean;
-  demoPage?: "churn" | "taxi";
+  demoPage?: "churn" | "taxi" | "megaline";
 };
 
 export type SkillCategory = {
@@ -94,6 +99,7 @@ export const projectsByLanguage: Record<Language, Project[]> = {
     technologies: ["Python", "Pandas", "Seaborn"],
     github: "https://github.com/matematik-isto/cellphone_plans_project",
     demo: "#",
+    demoPage: "megaline",
   },
   {
     title: "Dashboard de Marketing en Power BI",
@@ -139,6 +145,7 @@ export const projectsByLanguage: Record<Language, Project[]> = {
       technologies: ["Python", "Pandas", "Seaborn"],
       github: "https://github.com/matematik-isto/cellphone_plans_project",
       demo: "#",
+      demoPage: "megaline",
     },
     {
       title: "Power BI Marketing Dashboard",
@@ -550,6 +557,67 @@ export const taxiDemoByLanguage: Record<Language, ProjectDemo> = {
       { src: taxiScores.url, caption: "Screenshot from the original page: comparison of user scores on PC and Xbox One." }
     ]
   }
+};
+
+export const megalineDemoByLanguage: Record<Language, ProjectDemo> = {
+  es: {
+    cover: { src: megalineHeader.url, caption: "Conectividad y telefonía móvil" },
+    repoLabel: "Repositorio en GitHub",
+    repoUrl: "https://github.com/matematik-isto/cellphone_plans_project",
+    screenshotsHeading: "Capturas de pantalla",
+    sections: [
+      { heading: "Resumen", blocks: [
+        { text: "Megaline ofrece dos tarifas de prepago: Surf y Ultimate. El departamento comercial quiere saber cuál de los planes genera más ingresos para poder ajustar el presupuesto de publicidad." },
+        { text: "Surf", items: ["Pago mensual: $20.", "500 minutos al mes, 50 SMS y 15 GB de datos.", "Si se exceden los límites del paquete: 1 minuto: 3 centavos; 1 SMS: 3 centavos; 1 GB de datos: $10."] },
+        { text: "Ultimate", items: ["Pago mensual: $70.", "3000 minutos al mes, 1000 SMS y 30 GB de datos.", "Si se exceden los límites del paquete: 1 minuto: 1 centavo; 1 SMS: 1 centavo; 1 GB de datos: $7."] },
+      ] },
+      { heading: "Datasets", blocks: [
+        { text: "users — 500 registros. Periodo: Ene 2018 - Dic 2018. Variables:", items: ["user_id", "first_name", "last_name", "age", "reg_date", "churn_date", "city", "plan"] },
+        { text: "calls — Más de 137 000 registros. Periodo: Ene 2018 - Dic 2018. Variables:", items: ["id", "call_date", "duration", "user_id"] },
+        { text: "messages — Más de 76 000 registros. Periodo: Ene 2018 - Dic 2018. Variables:", items: ["id", "message_date", "user_id"] },
+        { text: "internet — Más de 104 000 registros. Periodo: Ene 2018 - Dic 2018. Principales variables:", items: ["id", "mb_used", "session_date", "user_id"] },
+        { text: "plans — Variables:", items: ["plan_name", "usd_monthly_fee", "minutes_included", "messages_included", "mb_per_month_included", "usd_per_minute", "usd_per_gb"] },
+      ] },
+      { heading: "Metodología", blocks: [{ items: ["Limpieza de datos y preprocesamiento", "Análisis Exploratorio de Datos (EDA)", "Pruebas de hipótesis"] }] },
+      { heading: "Resultados e Ideas Clave", blocks: [{ items: ["Las pruebas de hipótesis muestran que el plan Ultimate genera más ingresos.", "Similarmente, los usuarios del área NY-NJ generan menos ingresos que en el promedio general."] }] },
+      { heading: "Herramientas y tecnologías", blocks: [{ items: ["Python: pandas, seaborn, scipy.", "Pruebas de Hipótesis."] }] },
+    ],
+    screenshots: [
+      { src: megalineAggregation.url, caption: "Agregación de datos por usuario y mes: cálculo del número de llamadas para preparar el análisis estadístico." },
+      { src: megalineDensity.url, caption: "Histograma de densidad de ingresos en USD por usuario: comparación de los planes Surf y Ultimate." },
+      { src: megalineMinutes.url, caption: "Duración promedio de llamadas por mes: comparación de minutos entre los planes Surf y Ultimate." },
+      { src: megalineIncome.url, caption: "Diagrama de caja de ingresos mensuales en USD: distribución y valores atípicos por plan." },
+    ],
+  },
+  en: {
+    cover: { src: megalineHeader.url, caption: "Connectivity and mobile telecommunications" },
+    repoLabel: "GitHub repository",
+    repoUrl: "https://github.com/matematik-isto/cellphone_plans_project",
+    screenshotsHeading: "Screenshots",
+    sections: [
+      { heading: "Summary", blocks: [
+        { text: "Megaline offers two prepaid plans: Surf and Ultimate. The commercial department wants to know which plan generates more revenue in order to adjust the advertising budget." },
+        { text: "Surf", items: ["Monthly fee: $20.", "500 minutes per month, 50 SMS and 15 GB of data.", "If package limits are exceeded: 1 minute: 3 cents; 1 SMS: 3 cents; 1 GB of data: $10."] },
+        { text: "Ultimate", items: ["Monthly fee: $70.", "3000 minutes per month, 1000 SMS and 30 GB of data.", "If package limits are exceeded: 1 minute: 1 cent; 1 SMS: 1 cent; 1 GB of data: $7."] },
+      ] },
+      { heading: "Datasets", blocks: [
+        { text: "users — 500 records. Period: Jan 2018 - Dec 2018. Variables:", items: ["user_id", "first_name", "last_name", "age", "reg_date", "churn_date", "city", "plan"] },
+        { text: "calls — More than 137,000 records. Period: Jan 2018 - Dec 2018. Variables:", items: ["id", "call_date", "duration", "user_id"] },
+        { text: "messages — More than 76,000 records. Period: Jan 2018 - Dec 2018. Variables:", items: ["id", "message_date", "user_id"] },
+        { text: "internet — More than 104,000 records. Period: Jan 2018 - Dec 2018. Main variables:", items: ["id", "mb_used", "session_date", "user_id"] },
+        { text: "plans — Variables:", items: ["plan_name", "usd_monthly_fee", "minutes_included", "messages_included", "mb_per_month_included", "usd_per_minute", "usd_per_gb"] },
+      ] },
+      { heading: "Methodology", blocks: [{ items: ["Data cleaning and preprocessing", "Exploratory Data Analysis (EDA)", "Hypothesis testing"] }] },
+      { heading: "Results and Key Insights", blocks: [{ items: ["Hypothesis tests show that the Ultimate plan generates more revenue.", "Similarly, users in the NY-NJ area generate less revenue than the overall average."] }] },
+      { heading: "Tools and technologies", blocks: [{ items: ["Python: pandas, seaborn, scipy.", "Hypothesis testing."] }] },
+    ],
+    screenshots: [
+      { src: megalineAggregation.url, caption: "Data aggregation by user and month: calculating the number of calls to prepare the statistical analysis." },
+      { src: megalineDensity.url, caption: "Income density histogram in USD per user: comparison of the Surf and Ultimate plans." },
+      { src: megalineMinutes.url, caption: "Average call duration by month: comparison of minutes across the Surf and Ultimate plans." },
+      { src: megalineIncome.url, caption: "Monthly income box plot in USD: distribution and outliers by plan." },
+    ],
+  },
 };
 
 export const profile = {
