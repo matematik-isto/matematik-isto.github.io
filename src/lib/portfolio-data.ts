@@ -4,6 +4,7 @@ import dashboardDb from "@/assets/marketing-dashboard-database.png.asset.json";
 import churnMonths from "@/assets/churn-months.png.asset.json";
 import churnCharges from "@/assets/churn-charges.png.asset.json";
 import churnRoc from "@/assets/churn-roc.png.asset.json";
+import churnCover from "@/assets/churn-cover.png.asset.json";
 import taxiHeader from "@/assets/taxi-header.jpg.asset.json";
 import taxiPlatforms from "@/assets/taxi-analysis-0.png.asset.json";
 import taxiGenres from "@/assets/taxi-analysis-1.png.asset.json";
