@@ -64,6 +64,7 @@ export type PortfolioCopy = {
   send: string;
   sent: string;
   findMe: string;
+  downloadCv: string;
   rights: string;
 };
 
