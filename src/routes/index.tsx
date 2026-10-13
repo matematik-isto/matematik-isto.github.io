@@ -42,6 +42,7 @@ import {
 import profilePhoto from "@/assets/perfil.png.asset.json";
 import dataScienceBanner from "@/assets/banner-datos.png.asset.json";
 import cvEn from "@/assets/cv-en.pdf.asset.json";
+import cvEs from "@/assets/cv-es.pdf.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -67,6 +68,8 @@ export const Route = createFileRoute("/")({
 
 function Navbar({ language, copy, onLanguageChange }: { language: Language; copy: PortfolioCopy; onLanguageChange: (language: Language) => void }) {
   const [scrolled, setScrolled] = useState(false);
+  const cv = language === "es" ? cvEs : cvEn;
+  const cvFilename = language === "es" ? "RamonCorrea_CV_DS_es.pdf" : "RamonCorrea_CV_DS_en.pdf";
   const navLinks = [
     { label: copy.nav.home, href: "#inicio" },
     { label: copy.nav.projects, href: "#proyectos" },
@@ -142,7 +145,7 @@ function Navbar({ language, copy, onLanguageChange }: { language: Language; copy
             size="sm"
             className="bg-accent text-accent-foreground hover:bg-accent/90"
           >
-            <a href={cvEn.url} download="RamonCorrea_CV_DS_en.pdf">
+            <a href={cv.url} download={cvFilename}>
               {copy.downloadCv} <Download className="ml-2 size-4" />
             </a>
           </Button>
