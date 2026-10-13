@@ -64,6 +64,7 @@ export type PortfolioCopy = {
   send: string;
   sent: string;
   findMe: string;
+  downloadCv: string;
   rights: string;
 };
 
@@ -661,6 +662,7 @@ export const portfolioCopy: Record<Language, PortfolioCopy> = {
     send: "Enviar mensaje",
     sent: "¡Gracias! Tu mensaje fue enviado correctamente.",
     findMe: "También puedes encontrarme en:",
+    downloadCv: "Descargar CV",
     rights: "Todos los derechos reservados.",
   },
   en: {
@@ -690,6 +692,7 @@ export const portfolioCopy: Record<Language, PortfolioCopy> = {
     send: "Send message",
     sent: "Thank you! Your message was sent successfully.",
     findMe: "You can also find me on:",
+    downloadCv: "Download CV",
     rights: "All rights reserved.",
   },
 };
