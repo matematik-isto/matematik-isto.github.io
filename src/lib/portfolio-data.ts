@@ -248,6 +248,7 @@ export type ProjectDemo = {
 
 export const churnDemoByLanguage: Record<Language, ProjectDemo> = {
   es: {
+    cover: { src: churnCover.url, caption: "Señales de fuga de clientes" },
     screenshotsHeading: "Capturas",
     repoLabel: "Repositorio en GitHub",
     repoUrl: "https://github.com/matematik-isto/ml-churn-analysis-final-project",
