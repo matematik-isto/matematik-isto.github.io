@@ -41,6 +41,7 @@ import {
 } from "@/lib/portfolio-data";
 import profilePhoto from "@/assets/perfil.png.asset.json";
 import dataScienceBanner from "@/assets/banner-datos.png.asset.json";
+import cvEn from "@/assets/cv-en.pdf.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -129,12 +130,23 @@ function Navbar({ language, copy, onLanguageChange }: { language: Language; copy
           ))}
         </ul>
         </div>
-        <a
-          href="#inicio"
-          className="text-lg font-bold tracking-tight text-foreground"
-        >
-          <span className="text-accent">●</span>Ramón Correa
-        </a>
+        <div className="flex flex-wrap items-center justify-between gap-y-2">
+          <a
+            href="#inicio"
+            className="text-lg font-bold tracking-tight text-foreground"
+          >
+            <span className="text-accent">●</span>Ramón Correa
+          </a>
+          <Button
+            asChild
+            size="sm"
+            className="bg-accent text-accent-foreground hover:bg-accent/90"
+          >
+            <a href={cvEn.url} download="RamonCorrea_CV_DS_en.pdf">
+              {copy.downloadCv} <Download className="ml-2 size-4" />
+            </a>
+          </Button>
+        </div>
       </nav>
     </header>
   );
