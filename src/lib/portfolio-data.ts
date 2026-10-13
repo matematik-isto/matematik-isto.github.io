@@ -692,6 +692,7 @@ export const portfolioCopy: Record<Language, PortfolioCopy> = {
     send: "Send message",
     sent: "Thank you! Your message was sent successfully.",
     findMe: "You can also find me on:",
+    downloadCv: "Download CV",
     rights: "All rights reserved.",
   },
 };
