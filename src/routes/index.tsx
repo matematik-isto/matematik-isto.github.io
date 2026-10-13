@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Github, Linkedin, ArrowRight, BarChart3, ExternalLink, Database } from "lucide-react";
+import { Github, Linkedin, ArrowRight, BarChart3, ExternalLink, Database, Download } from "lucide-react";
 import {
   siPython,
   siPostgresql,
